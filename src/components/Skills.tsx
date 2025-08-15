@@ -9,33 +9,26 @@ const Skills: React.FC = () => {
   const skillCategories: SkillCategory[] = [
     {
       name: "Programming Languages",
-      skills: ["JavaScript", "TypeScript", "HTML5", "CSS3", "Python"]
+      skills: ["HTML", "CSS", "Java", "PHP", "JavaScript", "MySQL", "Ruby", "Python"]
     },
     {
       name: "Frameworks & Libraries",
-      skills: ["React", "Node.js", "Express", "Vite", "Storybook"]
+      skills: ["React", "Node.js", "Vite", "Storybook"]
     },
     {
       name: "Tools & Technologies",
-      skills: ["Git", "GitHub", "VS Code", "Docker", "npm"]
-    },
-    {
-      name: "Development Practices",
-      skills: ["Responsive Design", "Component-Based Architecture", "Testing", "Version Control", "Agile Development"]
+      skills: ["Git", "GitHub", "VS Code", "Docker", "npm", "XAMPP", "VirtualBox", "SQL Manager"]
     }
   ]
 
   return (
-    <section className="skills">
+    <section id="skills" className="skills">
       <div className="container">
         <h2>Skills & Expertise</h2>
         <div className="skills-content">
           <div className="skills-description">
             <p>
-              Throughout my academic journey, I've developed a diverse set of technical 
-              skills and competencies. I focus on writing clean, maintainable code and 
-              following industry best practices. My experience spans both front-end and 
-              back-end development, with a particular emphasis on modern web technologies.
+              Throughout my academic journey, I have created and maintained various different types of websites, ranging from CMS, Blogs, E-Commerce Sites, and React apps. I am eager to continue learning and have enrolled myself in various online courses to further my knowledge. 
             </p>
           </div>
           <div className="skills-grid">
