@@ -39,13 +39,15 @@ npm run dev          # Start development server
 npm run build        # Build for production
 
 # Code Quality
-npx run check        # Run all checks
-npm run lint         # Run ESLint
-npm run format       # Prettier
-npm test             # Run tests in watch mode
+npx prettier --write . # Prettier
+npm run lint           # ESLint
+npm test               # Tests
+
+# Production build
+npm run build
 
 # Git Hooks (automatic)
-# - Pre-commit: Runs linting, formatting, and tests
+# - Pre-commit: Runs linting, prettier, and tests
 ```
 
 ## Component Library Integration
