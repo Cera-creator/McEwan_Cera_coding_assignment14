@@ -11,13 +11,14 @@
 
    ```
    git clone https://github.com/Cera-creator/McEwan_Cera_coding_assignment14.git
-   cd McEwan_Cera_portfolio
+   cd cd McEwan_Cera_coding_assignment13/component_library/McEwan_Cera_portfolio
    ```
+
+   **Note:** The portfolio is located inside the component library directory to share the same testing infrastructure and dependencies.
 
 2. **Build the Docker image**:
 
-   ```
-   docker build -t mcewan_cera_portfolio .
+   ```   docker build -t mcewan_cera_portfolio .
    ```
 
 3. **Run the container**:
@@ -86,3 +87,4 @@ This portfolio uses custom components from the component library:
 - Image/Icon
 - Summary
 - Link
+
