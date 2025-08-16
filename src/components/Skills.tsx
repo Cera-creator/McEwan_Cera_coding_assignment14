@@ -1,25 +1,44 @@
-import React from 'react'
+import React from 'react';
+import { Text } from './Text';
 
 interface SkillCategory {
-  name: string
-  skills: string[]
+  name: string;
+  skills: string[];
 }
 
 const Skills: React.FC = () => {
   const skillCategories: SkillCategory[] = [
     {
-      name: "Programming Languages",
-      skills: ["HTML", "CSS", "Java", "PHP", "JavaScript", "MySQL", "Ruby", "Python"]
+      name: 'Programming Languages',
+      skills: [
+        'HTML',
+        'CSS',
+        'Java',
+        'PHP',
+        'JavaScript',
+        'MySQL',
+        'Ruby',
+        'Python',
+      ],
     },
     {
-      name: "Frameworks & Libraries",
-      skills: ["React", "Node.js", "Vite", "Storybook"]
+      name: 'Frameworks & Libraries',
+      skills: ['React', 'Node.js', 'Vite', 'Storybook'],
     },
     {
-      name: "Tools & Technologies",
-      skills: ["Git", "GitHub", "VS Code", "Docker", "npm", "XAMPP", "VirtualBox", "SQL Manager"]
-    }
-  ]
+      name: 'Tools & Technologies',
+      skills: [
+        'Git',
+        'GitHub',
+        'VS Code',
+        'Docker',
+        'npm',
+        'XAMPP',
+        'VirtualBox',
+        'SQL Manager',
+      ],
+    },
+  ];
 
   return (
     <section id="skills" className="skills">
@@ -27,9 +46,8 @@ const Skills: React.FC = () => {
         <h2>Skills & Expertise</h2>
         <div className="skills-content">
           <div className="skills-description">
-            <p>
-              Throughout my academic journey, I have created and maintained various different types of websites, ranging from CMS, Blogs, E-Commerce Sites, and React apps. I am eager to continue learning and have enrolled myself in various online courses to further my knowledge. 
-            </p>
+            <Text content="Throughout my academic journey, I have created and maintained various different types of websites, ranging from CMS, Blogs, E-Commerce Sites, and React apps. I am eager to continue learning and have enrolled myself in various online courses to further my knowledge." />
+            <Text content="Below is a list of languages, frameworks, and tools I have used." />
           </div>
           <div className="skills-grid">
             {skillCategories.map((category) => (
@@ -46,7 +64,7 @@ const Skills: React.FC = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

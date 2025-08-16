@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 interface NavigationProps {
-  onSectionChange: (sectionId: string) => void
+  onSectionChange: (sectionId: string) => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ onSectionChange }) => {
-  const [activeSection, setActiveSection] = useState('personal-info')
+  const [activeSection, setActiveSection] = useState('personal-info');
 
   const navItems = [
     { id: 'personal-info', label: 'Personal Info' },
-    { id: 'work-projects', label: 'Work & Projects' },
+    { id: 'work-projects', label: 'Projects' },
     { id: 'skills', label: 'Skills' },
-    { id: 'resources', label: 'Resources' }
-  ]
+    { id: 'resources', label: 'Resources' },
+  ];
 
   const handleNavClick = (sectionId: string) => {
-    setActiveSection(sectionId)
-    onSectionChange(sectionId)
-  }
+    setActiveSection(sectionId);
+    onSectionChange(sectionId);
+  };
 
   return (
     <nav className="navigation">
       <div className="container">
         <div className="nav-content">
           <div className="nav-brand">
-            <h2>Cera McEwan</h2>
+            <h2>Cera's Portfolio</h2>
           </div>
           <ul className="nav-menu">
             {navItems.map((item) => (
@@ -41,7 +41,7 @@ const Navigation: React.FC<NavigationProps> = ({ onSectionChange }) => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

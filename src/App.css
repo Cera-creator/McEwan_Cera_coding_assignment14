@@ -1,4 +1,18 @@
-/* Navigation Styles */
+:root {
+  --primary-color: #4ade80;
+  --secondary-color: #f472b6;
+  --accent-color: #22c55e;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --background-primary: #f0fdf4;
+  --background-secondary: #fdf2f8;
+  --border-color: #e5e7eb;
+  --shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
+
 .navigation {
   background: white;
   border-bottom: 1px solid var(--border-color);
@@ -68,7 +82,6 @@
   font-weight: 500;
 }
 
-/* Section Transitions */
 main {
   min-height: 100vh;
 }
@@ -88,9 +101,12 @@ main > * {
   }
 }
 
-/* Header Styles */
 .header {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
   padding: 60px 0;
   text-align: center;
@@ -106,7 +122,6 @@ main > * {
   font-size: 1.2rem;
 }
 
-/* Basic Info Styles */
 .basic-info {
   background-color: var(--background-primary);
 }
@@ -134,13 +149,12 @@ main > * {
 }
 
 .info-details ul li::before {
-  content: "•";
+  content: '•';
   color: var(--primary-color);
   position: absolute;
   left: 0;
 }
 
-/* Work/Projects Styles */
 .work {
   background-color: var(--background-secondary);
 }
@@ -155,12 +169,22 @@ main > * {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: 700px;
 }
 
 .project-image {
-  height: 250px;
+  height: 300px;
   overflow: hidden;
   border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.project-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .project-image img {
@@ -170,7 +194,71 @@ main > * {
   border-radius: 0;
 }
 
-/* Portfolio Card Component Styles */
+.image-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  cursor: pointer;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+}
+
+.modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.modal-nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-prev {
+  left: -60px;
+}
+
+.modal-next {
+  right: -60px;
+}
+
 .portfolio-card {
   background: white;
   border-radius: var(--border-radius);
@@ -178,11 +266,16 @@ main > * {
   box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  overflow: hidden;
 }
 
 .portfolio-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
 }
 
 .card-title {
@@ -190,18 +283,28 @@ main > * {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .card-content {
-  margin-bottom: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-content p {
+  margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .card-footer {
   display: flex;
   justify-content: center;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
-/* Portfolio Button Component Styles */
 .portfolio-button {
   padding: 0.75rem 1.5rem;
   border: none;
@@ -211,19 +314,34 @@ main > * {
   font-size: 1rem;
   transition: var(--transition);
   cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
 }
 
 .portfolio-button:hover:not(:disabled) {
   transform: translateY(-2px);
   filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
 }
 
 .portfolio-button:disabled {
   cursor: not-allowed;
+  opacity: 0.6;
+  background: #ccc !important;
+}
+
+.portfolio-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: #ccc !important;
 }
 
 .tech-list {
   margin: 1.5rem 0;
+  flex-shrink: 0;
 }
 
 .tech-list h4 {
@@ -239,15 +357,24 @@ main > * {
 }
 
 .tech-list li {
-  background-color: var(--background-secondary);
+  background: linear-gradient(
+    135deg,
+    var(--background-primary),
+    var(--background-secondary)
+  );
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.9rem;
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
-/* Skills Styles */
+.tech-list li:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
 .skills {
   background-color: var(--background-primary);
 }
@@ -294,7 +421,6 @@ main > * {
   border-bottom: none;
 }
 
-/* Resources Styles */
 .resources {
   background-color: var(--background-secondary);
 }
@@ -312,28 +438,22 @@ main > * {
   box-shadow: var(--shadow);
   text-align: center;
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  justify-content: space-between;
 }
 
 .resource-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--primary-color);
 }
 
-.resource-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.5rem;
-  background-color: var(--background-secondary);
-  border-radius: 50%;
+.resource-content {
+  flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.resource-icon img {
-  width: 40px;
-  height: 40px;
-  border-radius: 0;
+  flex-direction: column;
 }
 
 .resource-content h3 {
@@ -344,58 +464,70 @@ main > * {
 .resource-content p {
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  flex: 1;
 }
 
-/* Responsive Design */
+.resource-image {
+  margin-bottom: 1.5rem;
+}
+
+.resource-image img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
 @media (max-width: 768px) {
   .nav-content {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav-menu {
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .nav-link {
     min-width: 80px;
     padding: 0.75rem 1rem;
   }
-  
+
   .nav-icon {
     font-size: 1.25rem;
   }
-  
+
   .nav-label {
     font-size: 0.75rem;
   }
-  
+
   .info-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .resources-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .header {
     padding: 40px 0;
   }
-  
+
   .header h1 {
     font-size: 2rem;
   }
-  
+
   .header p {
     font-size: 1rem;
   }

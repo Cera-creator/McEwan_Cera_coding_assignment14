@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Header: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Header: React.FC = () => {
         <p>Component Library Portfolio</p>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

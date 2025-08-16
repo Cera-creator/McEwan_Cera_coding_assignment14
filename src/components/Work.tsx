@@ -1,48 +1,96 @@
-import React from 'react'
-import PortfolioCard from './PortfolioCard'
-import PortfolioButton from './PortfolioButton'
+import React, { useState } from 'react';
+import PortfolioCard from './PortfolioCard';
+import PortfolioButton from './PortfolioButton';
 
 interface Project {
-  id: number
-  title: string
-  description: string
-  images: string[]
-  link: string
-  techList: string[]
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  link: string;
+  techList: string[];
 }
 
 const Work: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentProject, setCurrentProject] = useState<Project | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const projects: Project[] = [
     {
       id: 1,
-      title: "Game Review CMS",
-      description: "This CMS was proposed as an additional platform for a Twitch streamer and their community. It allowed the streamer to gain insight on what games the viewers wanted to see, and allow viewers to leave comments on games.",
-      images: ["/assy14/cms1.png", "/assy14/cms2.png"],
-      link: "https://github.com/Cera-creator/FinalProject",
-      techList: ["PHP", "CSS", "JavaScript", "Hosted locally using XAMPP"]
+      title: 'Game Review CMS',
+      description:
+        'This CMS was proposed as an additional platform for a Twitch streamer and their community. It allowed the streamer to gain insight on what games the viewers wanted to see, and allow viewers to leave comments on games.',
+      images: ['/images/cms1.png', '/images/cms2.png'],
+      link: 'https://github.com/Cera-creator/FinalProject',
+      techList: ['PHP', 'CSS', 'JavaScript', 'Hosted locally using XAMPP'],
     },
     {
       id: 2,
-      title: "D&D Data Collection ",
-      description: "This project is a collection of data from different sources within the Dungeons and Dragons API. The different sources (class, race, backgrounds, feats) are combined together to create a character.",
-      images: ["/assy14/d&d1.png", "/assy14/d&d2.png", "/assy14/d&d3.png"],
-      link: "https://github.com/Cera-creator/IntroProject",
-      techList: ["HTML", "Ruby", "JavaScript", "CSS", "Hosted via Rails Server"]
-    }
-  ]
+      title: 'D&D Data Collection ',
+      description:
+        'This project is a collection of data from different sources within the Dungeons and Dragons API. The different sources (class, race, backgrounds, feats) are combined together to create a character.',
+      images: ['/images/d&d1.png', '/images/d&d2.png', '/images/d&d3.png'],
+      link: 'https://github.com/Cera-creator/IntroProject',
+      techList: [
+        'HTML',
+        'Ruby',
+        'JavaScript',
+        'CSS',
+        'Hosted via Rails Server',
+      ],
+    },
+  ];
 
   const handleProjectClick = (link: string) => {
-    window.open(link, '_blank', 'noopener,noreferrer')
-  }
+    window.open(link, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleImageClick = (project: Project, imageIndex: number) => {
+    setSelectedImage(project.images[imageIndex]);
+    setCurrentProject(project);
+    setCurrentImageIndex(imageIndex);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setCurrentProject(null);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (currentProject) {
+      const nextIndex = (currentImageIndex + 1) % currentProject.images.length;
+      setCurrentImageIndex(nextIndex);
+      setSelectedImage(currentProject.images[nextIndex]);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (currentProject) {
+      const prevIndex =
+        currentImageIndex === 0
+          ? currentProject.images.length - 1
+          : currentImageIndex - 1;
+      setCurrentImageIndex(prevIndex);
+      setSelectedImage(currentProject.images[prevIndex]);
+    }
+  };
 
   return (
     <section id="work-projects" className="work">
       <div className="container">
-        <h2>My Work</h2>
+        <h2>My Projects</h2>
         <div className="projects-grid">
           {projects.map((project) => (
             <div key={project.id} className="project-wrapper">
-              <div className="project-image">
+              <div
+                className="project-image"
+                onClick={() => handleImageClick(project, 0)}
+              >
                 <img src={project.images[0]} alt={project.title} />
               </div>
               <PortfolioCard
@@ -64,7 +112,6 @@ const Work: React.FC = () => {
                   <PortfolioButton
                     label="View Project"
                     onClick={() => handleProjectClick(project.link)}
-                    backgroundColor="#2563eb"
                   />
                 }
               />
@@ -72,8 +119,34 @@ const Work: React.FC = () => {
           ))}
         </div>
       </div>
-    </section>
-  )
-}
 
-export default Work
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              ×
+            </button>
+            {currentProject && currentProject.images.length > 1 && (
+              <>
+                <button className="modal-nav modal-prev" onClick={prevImage}>
+                  ‹
+                </button>
+                <button className="modal-nav modal-next" onClick={nextImage}>
+                  ›
+                </button>
+              </>
+            )}
+            <img
+              src={selectedImage}
+              alt="Project preview"
+              className="modal-image"
+            />
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Work;

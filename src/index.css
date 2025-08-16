@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #2563eb;
-  --secondary-color: #1e40af;
-  --accent-color: #3b82f6;
+  --primary-color: #4ade80;
+  --secondary-color: #f472b6;
+  --accent-color: #22c55e;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
-  --background-primary: #ffffff;
-  --background-secondary: #f9fafb;
+  --background-primary: #f0fdf4;
+  --background-secondary: #fdf2f8;
   --border-color: #e5e7eb;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --border-radius: 8px;
@@ -19,9 +19,9 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -30,8 +30,8 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .container {
@@ -48,7 +48,12 @@ section:nth-child(even) {
   background-color: var(--background-secondary);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
@@ -105,15 +110,15 @@ img {
   .container {
     padding: 0 15px;
   }
-  
+
   section {
     padding: 60px 0;
   }
-  
+
   h1 {
     font-size: 2.5rem;
   }
-  
+
   h2 {
     font-size: 2rem;
   }
