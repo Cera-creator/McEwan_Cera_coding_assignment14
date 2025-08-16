@@ -18,7 +18,8 @@
 
 2. **Build the Docker image**:
 
-   ```   docker build -t mcewan_cera_portfolio .
+   ```docker build -t mcewan_cera_portfolio .
+
    ```
 
 3. **Run the container**:
@@ -87,4 +88,3 @@ This portfolio uses custom components from the component library:
 - Image/Icon
 - Summary
 - Link
-
